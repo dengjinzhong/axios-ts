@@ -11,7 +11,19 @@ interface AxiosRequestConfig {
   data?: any
   params?: any
   headers?: any
+  responseType?: XMLHttpRequestResponseType
 }
+
+interface AxiosResponse {
+  data: any
+  status: number
+  statusText: string
+  headers: any
+  config: AxiosRequestConfig
+  request: any
+}
+
+interface AxiosPromise extends Promise<AxiosResponse> {}
 
 type Method =
   | 'get'
@@ -29,4 +41,4 @@ type Method =
   | 'patch'
   | 'PATCH'
 
-export { AxiosRequestConfig }
+export { AxiosRequestConfig, AxiosPromise, AxiosResponse }
