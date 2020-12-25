@@ -12,6 +12,7 @@ interface AxiosRequestConfig {
   params?: any
   headers?: any
   responseType?: XMLHttpRequestResponseType
+  timeout?: number
 }
 
 interface AxiosResponse {
@@ -24,6 +25,14 @@ interface AxiosResponse {
 }
 
 interface AxiosPromise extends Promise<AxiosResponse> {}
+
+interface AxiosError extends Error {
+  config: AxiosRequestConfig
+  code?: string
+  request?: any
+  response?: AxiosResponse
+  isAxiosError: boolean
+}
 
 type Method =
   | 'get'
@@ -41,4 +50,4 @@ type Method =
   | 'patch'
   | 'PATCH'
 
-export { AxiosRequestConfig, AxiosPromise, AxiosResponse }
+export { AxiosRequestConfig, AxiosPromise, AxiosResponse, AxiosError }
